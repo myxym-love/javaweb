@@ -24,4 +24,7 @@ public class UserService {
         return userDao.findAll();
     }
 
+    public User login(String username, String pwd) throws SQLException {
+        return userDao.login(username,pwd);
+    }
 }

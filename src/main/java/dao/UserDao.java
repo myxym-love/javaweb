@@ -2,6 +2,7 @@ package dao;
 
 import domain.User;
 import org.apache.commons.dbutils.*;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import utils.DataSourceUtil;
 
@@ -27,4 +28,10 @@ public class UserDao {
         return queryRunner.query(sql,new BeanListHandler<>(User.class));
     }
 
+    public User login(String username, String pwd) throws SQLException {
+
+        String sql = "select * from user where username=? and pwd=?";
+
+        return queryRunner.query(sql,new BeanHandler<>(User.class),username,pwd);
+    }
 }
