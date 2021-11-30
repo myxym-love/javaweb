@@ -27,4 +27,8 @@ public class UserService {
     public User login(String username, String pwd) throws SQLException {
         return userDao.login(username,pwd);
     }
+
+    public int register(User user) throws SQLException {
+        return userDao.register(user);
+    }
 }

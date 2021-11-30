@@ -34,4 +34,9 @@ public class UserDao {
 
         return queryRunner.query(sql,new BeanHandler<>(User.class),username,pwd);
     }
+
+    public int register(User user) throws SQLException {
+        String sql = "insert into user(phone,pwd,sex,username,wechat) values(?,?,?,?,?)";
+        return queryRunner.update(sql,user.getPhone(),user.getPwd(),user.getSex(),user.getUsername(),user.getWechat());
+    }
 }
